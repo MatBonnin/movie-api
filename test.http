@@ -137,3 +137,87 @@ Authorization: Bearer
 Content-Type: application/json
 
 ###
+
+### Créer une nouvelle entité dynamique (exemple: Book)
+POST {{baseUrl}}/dynamic/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3NzcwNjc1LCJleHAiOjE3Mjc3NzQyNzV9.i80qvm6_RTqo5gI3XDciGAFjPS7Iv6rgypIqyl-Bq54
+Content-Type: application/json
+
+{
+  "name": "test2",
+  "columns": {
+    "title": "VARCHAR",
+    "name": "VARCHAR"
+  }
+}
+
+###
+
+### Créer une nouvelle entité dynamique (exemple: Book)
+POST {{baseUrl}}/dynamic/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3NzcwNjc1LCJleHAiOjE3Mjc3NzQyNzV9.i80qvm6_RTqo5gI3XDciGAFjPS7Iv6rgypIqyl-Bq54
+Content-Type: application/json
+
+{
+  "name": "Book",
+  "columns": {
+    "title": "STRING",
+    "author": "STRING",
+    "publishedYear": "INTEGER"
+  },
+  "relations": {
+    "authors": {
+      "type": "belongsToMany",
+      "model": "Author",
+      "through": "BookAuthors"
+    }
+  }
+}
+
+###
+
+### Utiliser les routes CRUD générées pour `Book`
+
+### Créer un nouveau Book
+POST http://localhost:3000/api/test2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3NzcwNjc1LCJleHAiOjE3Mjc3NzQyNzV9.i80qvm6_RTqo5gI3XDciGAFjPS7Iv6rgypIqyl-Bq54
+Content-Type: application/json
+
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald"
+}
+
+###
+
+### Récupérer tous les Books
+GET {{baseUrl}}/book
+Authorization: Bearer 
+Content-Type: application/json
+
+###
+
+### Récupérer un Book spécifique
+GET {{baseUrl}}/book/1
+Authorization: Bearer 
+Content-Type: application/json
+
+###
+
+### Mettre à jour un Book
+PUT {{baseUrl}}/book/1
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+  "publishedYear": 1926
+}
+
+###
+
+### Supprimer un Book
+DELETE {{baseUrl}}/book/1
+Authorization: Bearer 
+Content-Type: application/json
+
+###
