@@ -1,0 +1,139 @@
+@baseUrl = http://localhost:3000/api
+
+### Récupérer les films avec un titre qui commence par "A"
+GET {{baseUrl}}/movies?filters[title][$startsWith]=M
+Content-Type: application/json
+
+###
+
+### Récupérer les films avec un titre qui contient "War"
+GET {{baseUrl}}/movies?filters[title][$contains]=War
+Content-Type: application/json
+###
+
+### Récupérer les films avec un titre qui se termine par "Man"
+GET {{baseUrl}}/movies?filters[title][$endsWith]=r
+Content-Type: application/json
+
+###
+
+### Récupérer les films dont la date de sortie est supérieure ou égale à 2020-01-01
+GET {{baseUrl}}/movies?filters[releaseDate][$gte]=2020-01-01
+Content-Type: application/json
+
+###
+
+### Récupérer les films dont la date de sortie est inférieure à 2010-01-01
+GET {{baseUrl}}/movies?filters[releaseDate][$lt]=2010-01-01
+Content-Type: application/json
+
+###
+
+### Récupérer les films dont le titre est "Inception"
+GET {{baseUrl}}/movies?filters[title][$eq]=Hounds of War
+Content-Type: application/json
+
+###
+
+### Récupérer les films dont le titre n'est pas "Avatar"
+GET {{baseUrl}}/movies?filters[title][$ne]=Hounds of War
+Content-Type: application/json
+
+###
+
+### Récupérer les films avec leurs acteurs (relation populate)
+GET {{baseUrl}}/movies?filters[title][$startsWith]=M&populate=actors
+Content-Type: application/json
+
+###
+
+### Récupérer les acteurs dont le nom commence par "A"
+GET {{baseUrl}}/actors?filters[name][$startsWith]=A
+Content-Type: application/json
+
+###
+
+### Récupérer les acteurs dont le nom contient "Smith"
+GET {{baseUrl}}/actors?filters[name][$contains]=Smith
+Content-Type: application/json
+
+###
+
+### Récupérer les acteurs dont le nom se termine par "son"
+GET {{baseUrl}}/actors?filters[name][$endsWith]=son
+Content-Type: application/json
+
+###
+
+### Récupérer les acteurs avec un ID égal à 1
+GET {{baseUrl}}/actors?filters[id][$eq]=1
+Content-Type: application/json
+
+###
+
+### Récupérer les acteurs avec un ID supérieur ou égal à 5
+GET {{baseUrl}}/actors?filters[id][$gte]=5
+Content-Type: application/json
+
+###
+
+### Récupérer les acteurs avec un ID inférieur à 10
+GET {{baseUrl}}/actors?filters[id][$lt]=10
+Content-Type: application/json
+
+###
+
+### Récupérer les acteurs avec leurs films (relation populate)
+GET {{baseUrl}}/actors?filters[name][$startsWith]=A&populate=movies
+Content-Type: application/json
+
+###
+
+### Récupérer les films dont le titre commence par "B" avec leurs acteurs
+GET {{baseUrl}}/movies?filters[title][$startsWith]=B&populate=actors
+Content-Type: application/json
+###
+
+### Récupérer les films dont le titre contient "Star" avec uniquement les noms des acteurs
+GET {{baseUrl}}/movies?filters[title][$contains]=A&fields[movies]=title&populate=actors&fields[actors]=id
+Content-Type: application/json
+
+### Récupérer les acteurs dont le nom commence par "A" avec leurs films et uniquement les titres des films
+GET {{baseUrl}}/actors?filters[name][$startsWith]=A&populate=movies&fields[movies]=id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3NzcwNjc1LCJleHAiOjE3Mjc3NzQyNzV9.i80qvm6_RTqo5gI3XDciGAFjPS7Iv6rgypIqyl-Bq54
+
+
+
+
+
+### TEST AUTH ###
+
+### Créer un compte utilisateur (register)
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+###
+
+### Se connecter (login)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+###
+
+### Récupérer des films après authentification (ajouter le token obtenu après login)
+GET {{baseUrl}}/movies
+Authorization: Bearer 
+Content-Type: application/json
+
+###
