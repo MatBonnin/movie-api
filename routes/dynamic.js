@@ -78,11 +78,9 @@ router.post('/create', async (req, res) => {
             break;
           // Ajouter d'autres types de relations si nécessaire
           default:
-            return res
-              .status(400)
-              .json({
-                error: `Type de relation ${relation.type} non supporté.`,
-              });
+            return res.status(400).json({
+              error: `Type de relation ${relation.type} non supporté.`,
+            });
         }
       }
     }
@@ -291,4 +289,4 @@ function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-module.exports = router;
+module.exports = { router, generateCRUDRoutes };

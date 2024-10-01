@@ -140,14 +140,14 @@ Content-Type: application/json
 
 ### Créer une nouvelle entité dynamique (exemple: Book)
 POST {{baseUrl}}/dynamic/create
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3NzcwNjc1LCJleHAiOjE3Mjc3NzQyNzV9.i80qvm6_RTqo5gI3XDciGAFjPS7Iv6rgypIqyl-Bq54
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3Nzc2NjA4LCJleHAiOjE3Mjc3ODAyMDh9.N12NMmckPIKhhE-XYjtjpo7VFGU0UQnMELrUsgj0zlk
 Content-Type: application/json
 
 {
-  "name": "test2",
+  "name": "voiture",
   "columns": {
-    "title": "VARCHAR",
-    "name": "VARCHAR"
+    "nom": "VARCHAR",
+    "marque": "VARCHAR"
   }
 }
 
@@ -179,13 +179,13 @@ Content-Type: application/json
 ### Utiliser les routes CRUD générées pour `Book`
 
 ### Créer un nouveau Book
-POST http://localhost:3000/api/test2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3NzcwNjc1LCJleHAiOjE3Mjc3NzQyNzV9.i80qvm6_RTqo5gI3XDciGAFjPS7Iv6rgypIqyl-Bq54
+POST http://localhost:3000/api/voiture
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3Nzc2NjA4LCJleHAiOjE3Mjc3ODAyMDh9.N12NMmckPIKhhE-XYjtjpo7VFGU0UQnMELrUsgj0zlk
 Content-Type: application/json
 
 {
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald"
+  "nom": "Clio",
+  "marque": "Renaud"
 }
 
 ###

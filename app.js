@@ -12,7 +12,7 @@ const moviesRouter = require('./routes/movies');
 const actorsRouter = require('./routes/actors');
 const importRouter = require('./routes/import');
 const authRouter = require('./routes/auth');
-const dynamicRouter = require('./routes/dynamic'); // Importer la route dynamique
+const dynamicRouter = require('./routes/dynamic').router; // Importer la route dynamique
 const authenticateToken = require('./middleware/auth');
 
 dotenv.config();
